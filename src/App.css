@@ -1,0 +1,25 @@
+.App {
+  display: grid;
+  height: 100vh;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 1fr 8fr;
+  grid-template-areas:
+    "header header"
+    "nav main";
+  grid-gap: 0.2rem;
+}
+
+header {
+  background: #27846d;
+  grid-area: header;
+}
+
+nav {
+  background: #e2f8f3;
+  grid-area: nav;
+}
+
+main {
+  background: #f8f8f3;
+  grid-area: main;
+}
