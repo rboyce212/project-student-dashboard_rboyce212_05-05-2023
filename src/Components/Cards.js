@@ -30,9 +30,9 @@ export const Cards = () => {
                 data.names.middleName +
                 " " +
                 data.names.surname}
-              <tr />
+              <br />
               {data.username}
-              <tr />
+              <br />
               {data.dob}
             </div>
           );
