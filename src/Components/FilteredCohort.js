@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { studentsData } from "../data/data";
 import "../App.css";
+import AccordionContainer from "./AccordionContainer";
+// import Table from "react-bootstrap/Table";
+import Accordion from "react-bootstrap/Accordion";
 
 // Defines a state variable and uses the useState hook to set the initial value to the studentsData array.
 export const FilteredCohort = () => {
@@ -36,8 +39,8 @@ export const FilteredCohort = () => {
       return new Date(b.cohortStartDate) - new Date(a.cohortStartDate);
     })
     .map(({ cohortCode }) => cohortCode);
-  console.log("cohorts" + cohorts);
-  console.log("unique" + uniqueCohorts);
+  // console.log("cohorts" + cohorts);
+  // console.log("unique" + uniqueCohorts);
 
   function removeDuplicates(cohorts) {
     return cohorts.filter((item, index) => cohorts.indexOf(item) === index);
@@ -61,19 +64,27 @@ export const FilteredCohort = () => {
   // Creates a filter functioning button for all cohorts combined (All Students), followed by each of the cohort codes. Still need to arrange them chronologically and separate the season and year with a space.
   return (
     <div className="FilteredCohort">
-      <button onClick={showAllStudents}>All Students</button>
       <div>
-        {cohortButtons.map((cohort) => {
-          return (
-            <button
-              key={cohort}
-              value={cohort}
-              onClick={(e) => filterByCohort(e.target.value)}
-            >
-              {cohort}
-            </button>
-          );
-        })}
+        <button
+          className="btn btn-outline-dark btn-lg border-radius-lg font-weight-bold btn-border-width-9px"
+          onClick={showAllStudents}
+        >
+          All Students
+        </button>
+        <div>
+          {cohortButtons.map((cohort) => {
+            return (
+              <button
+                className="btn btn-outline-dark"
+                key={cohort}
+                value={cohort}
+                onClick={(e) => filterByCohort(e.target.value)}
+              >
+                {cohort}
+              </button>
+            );
+          })}
+        </div>
       </div>
       <ul className="profile-containers">
         {filteredStudentsData.map((studentData) => {
@@ -82,7 +93,16 @@ export const FilteredCohort = () => {
             names: { preferredName, middleName, surname },
             username,
             dob,
-            cohort: { cohortCode, cohortStartDate },
+            // cohort: {
+            //   cohortCode,
+            //   cohortStartDate,
+            //   scoresAssisgnments,
+            //   scoresProjects,
+            //   scoresAssessments
+            // },
+            // codewars: { current: { total, lastWeek }, goal: { total, lastWeek } },
+            // },
+            // certifications: { resume, linkedin, github, mockInterview },
             id
           } = studentData;
           let middleNameAbbreviated = middleName
@@ -102,11 +122,12 @@ export const FilteredCohort = () => {
               <div>Email: {username}</div>
               <div>Birthday: {formatDate(dob)}</div>
               <div>
-                Cohort: {cohortCode} Starts: {cohortStartDate}
+                <AccordionContainer />
               </div>
             </li>
           );
         })}
+        ;
       </ul>
     </div>
   );

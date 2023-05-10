@@ -6,10 +6,12 @@ header {
   background: #27846d;
   color: aliceblue;
   text-align: center;
+  height: 100px;
+  padding-top: 25px;
 }
 
 nav {
-  background: #e2f8f3;
+  background: #f8f8e3;
   grid-area: nav;
 }
 
@@ -56,3 +58,21 @@ ul {
   padding: 20px;
   height: 100%;
 } */
+
+.search-title {
+  font-size: x-large;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* buttons {
+
+} */
+
+button {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  border-width: 5px;
+  margin: 5px 5px;
+  align-items: center;
+}

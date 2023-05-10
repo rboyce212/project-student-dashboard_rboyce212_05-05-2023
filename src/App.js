@@ -12,7 +12,7 @@ function App() {
       </header>
       <nav>
         <CohortDashboard />
-        Filter By Class Start Date
+        <div className="search-title">Filter By Class Start Date</div>
         <FilteredCohort />
       </nav>
     </div>
